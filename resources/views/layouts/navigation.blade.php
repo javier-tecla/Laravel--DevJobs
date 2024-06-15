@@ -15,6 +15,10 @@
                     <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
                         {{ __('Mis Vacantes') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
+                        {{ __('Crear Vacante') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -71,6 +75,10 @@
                 {{ __('Mis Vacantes') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
+                {{ __('Crear Vacante') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -82,7 +90,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -92,7 +100,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
