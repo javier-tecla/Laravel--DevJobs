@@ -38,6 +38,11 @@
             name="categoria" 
             :value="old('categoria')" 
         >
+                <option>-- Seleccione --</option>
+            @foreach ($categorias as $categoria)
+                <option value="{{ $categoria->id}}">{{$categoria->categoria}}</option>
+            
+            @endforeach
         </select>
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
     </div>

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Salario;
 use Livewire\Component;
+use App\Models\Categoria;
 
 class CrearVacante extends Component
 {
@@ -11,9 +12,11 @@ class CrearVacante extends Component
     {
         // Consulta BD
         $salarios = Salario::all();
+        $categorias = Categoria::all();
 
         return view('livewire.crear-vacante', [
-            'salarios' => $salarios
+            'salarios' => $salarios,
+            'categorias' => $categorias
         ]);
     }
 }
