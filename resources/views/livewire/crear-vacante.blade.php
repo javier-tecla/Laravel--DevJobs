@@ -21,6 +21,11 @@
             name="salario" 
             :value="old('salario')" 
         >
+            <option>-- Seleccione --</option>
+            @foreach ($salarios as $salario)
+                <option value="{{ $salario->id}}">{{$salario->salario}}</option>
+                
+            @endforeach
         </select>
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
     </div>
