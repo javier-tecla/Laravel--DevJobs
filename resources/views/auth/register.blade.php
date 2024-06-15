@@ -53,7 +53,7 @@
                 Olvidaste tu Password
             </x-link>
        
-    </div>
+        </div>
 
             <x-primary-button class="w-full justify-center">
                 {{ __('Crear Cuenta') }}
