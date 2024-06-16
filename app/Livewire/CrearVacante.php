@@ -1,13 +1,18 @@
 <?php
 
+
+
 namespace App\Livewire;
 
 use App\Models\Salario;
 use Livewire\Component;
 use App\Models\Categoria;
+use Livewire\WithFileUploads;
 
 class CrearVacante extends Component
 {
+    
+    
     public $titulo;
     public $salario;
     public $categoria;
@@ -15,6 +20,8 @@ class CrearVacante extends Component
     public $ultimo_dia;
     public $descripcion;
     public $imagen;
+
+    use WithFileUploads;
     
     protected $rules = [
         'titulo' => 'required|string',
@@ -22,13 +29,14 @@ class CrearVacante extends Component
         'categoria' => 'required',
         'empresa' => 'required',
         'ultimo_dia' => 'required',
-        'descripcion' => 'required',
-        'imagen' => 'required',
+        'descripcion' => 'required|string',
+        'imagen' => 'required|image|max:1024',
     ];
 
     public function crearVacante()
     {
         $datos = $this->validate();
+        
     }
 
     public function render()
@@ -37,9 +45,13 @@ class CrearVacante extends Component
         $salarios = Salario::all();
         $categorias = Categoria::all();
 
+
+
         return view('livewire.crear-vacante', [
             'salarios' => $salarios,
             'categorias' => $categorias
         ]);
     }
 }
+
+
