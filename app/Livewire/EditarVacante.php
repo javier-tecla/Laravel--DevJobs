@@ -17,6 +17,16 @@ class EditarVacante extends Component
     public $ultimo_dia;
     public $descripcion;
     public $imagen;
+
+    protected $rules = [
+        'titulo' => 'required|string',
+        'salario' => 'required',
+        'categoria' => 'required',
+        'empresa' => 'required',
+        'ultimo_dia' => 'required',
+        'descripcion' => 'required|string',
+        
+    ];
    
 
     public function mount(Vacante $vacante)
@@ -28,6 +38,11 @@ class EditarVacante extends Component
         $this->ultimo_dia = Carbon::parse( $vacante->ultimo_dia)->format('Y-m-d') ;
         $this->descripcion = $vacante->descripcion;
         $this->imagen = $vacante->imagen;
+    }
+
+    public function editarVacante()
+    {
+        $datos = $this->validate();
     }
 
     public function render()
