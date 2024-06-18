@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 
 class EditarVacante extends Component
 {
+    public $vacante_id;
     public $titulo;
     public $salario;
     public $categoria;
@@ -31,6 +32,7 @@ class EditarVacante extends Component
 
     public function mount(Vacante $vacante)
     {
+        $this->vacante_id = $vacante->id; // ESTO NO VA A FUNCIONAR
         $this->titulo = $vacante->titulo;
         $this->salario = $vacante->salario_id;
         $this->categoria = $vacante->categoria_id;
@@ -43,6 +45,28 @@ class EditarVacante extends Component
     public function editarVacante()
     {
         $datos = $this->validate();
+
+        // Si hay una nueva imagen
+
+        // Encontrar la vacante a editar
+        $vacante = Vacante::find($this->vacante_id);
+
+        // Asignar los valores
+        $vacante->titulo = $datos['titulo'];
+        $vacante->salario_id = $datos['salario'];
+        $vacante->categoria_id = $datos['categoria'];
+        $vacante->empresa = $datos['empresa'];
+        $vacante->ultimo_dia = $datos['ultimo_dia'];
+        $vacante->ultimo_dia = $datos['ultimo_dia'];
+        $vacante->descripcion = $datos['descripcion'];
+
+        // Guardar la vacante
+        $vacante->save();
+
+        // redireccionar
+        session()->flash('mensaje', 'La Vacante se actualizó Correctamente');
+
+        return redirect()->route('vacantes.index');
     }
 
     public function render()
